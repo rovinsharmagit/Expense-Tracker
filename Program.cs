@@ -1,10 +1,14 @@
 global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel.DataAnnotations.Schema;
+global using Microsoft.EntityFrameworkCore;
+using my_expenses.Data;
+
 var builder = WebApplication.CreateBuilder(args);
-
-
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<AppDataContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnections")));
 
 var app = builder.Build();
 
