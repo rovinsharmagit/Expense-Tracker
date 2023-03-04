@@ -15,5 +15,14 @@ namespace my_expenses.Models
         [Column(TypeName = "nvarchar(20)")]
         public string Type { get; set; } = "Expense";
 
+        [NotMapped]
+        public string? TitleWithIcon
+        {
+            get
+            {
+                return this.Icon + " " + this.Title;
+            }
+        }
+            
     }
 }

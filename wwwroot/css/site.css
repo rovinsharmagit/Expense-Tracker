@@ -11,6 +11,11 @@ html {
 html {
   position: relative;
   min-height: 100%;
+  font-family: "Inter"
+}
+
+*:not(.fa-solid):not(.fa):not(.e-icons){
+    font-family: "Inter"
 }
 
 body {
@@ -22,6 +27,50 @@ body {
 .e-bigger {
     font-size: x-large;
 }
+
+.btn:focus, .btn:active{
+    outline: none !important;
+    box-shadow:none;
+}
+
+.no-a-decoration, .no-a-decoration:hover{
+    text-decoration:none;
+    color: inherit;
+}
+
+.e-grid {
+    border: 0;
+    border-radius: 5px;
+}
+
+    .e-grid .e-gridcontent, .e-grid .e-table {
+        background-color: #1a222b;
+    }
+
+    .e-grid .e-gridheader {
+        border: 5px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        padding: 10px;
+        background-color: #222b33;
+    }
+
+        .e-grid .e-gridheader .e-headercell {
+            background-color: #222b33;
+        }
+
+    .e-grid .e-gridpager {
+        background-color: #1a222b;
+    }
+
+    .e-grid .e-pagercontainer {
+        border: none;
+        background-color: #1a222b;
+    }
+
+    .e-grid .e-content table {
+        padding: 0px 10px;
+    }
 
 .e-btn-group.custom-rbt-group {
     width :100%;
