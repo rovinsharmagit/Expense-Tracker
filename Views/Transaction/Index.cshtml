@@ -1,14 +1,13 @@
 ﻿@model IEnumerable<my_expenses.Models.Transaction>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["PageTitle"] = "Transactions";
+   ViewData["PageActionext"] = "+ New Transaction";
+   ViewData["PageActionUrl"] = "/Transaction/AddOrEdit";
 }
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
