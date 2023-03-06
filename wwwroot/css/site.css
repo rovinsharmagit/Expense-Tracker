@@ -98,3 +98,8 @@ body {
     background-color: #1a222b;
 
 }
+
+.e-breadcrumb a, .e-breadcrumb a:hover {
+      text-decoration: none !important;
+      color: inherit !important;
+}

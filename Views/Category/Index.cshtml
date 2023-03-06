@@ -1,14 +1,16 @@
 ﻿@model IEnumerable<my_expenses.Models.Category>
 
 @{
-    ViewData["Title"] = "Index";
+   ViewData["PageTitle"] = "Categories";
+   ViewData["PageActionext"] = "+ New Category";
+   ViewData["PageActionUrl"] = "/Category/AddOrEdit";
 }
 
-<div class="row">
+<div class="row" >
     <div class="col-md-7">
         <ejs-grid id="categories" dataSource="@Model" gridLines="None"
-         allowSorting="true" allowPaging="true"
-        >
+         allowSorting="true" allowPaging="true" >
+          <e-grid-pagesettings pageSize="5"></e-grid-pagesettings>
             <e-grid-columns>
                 <e-grid-column headerText="Category" field="TitleWithIcon"></e-grid-column>
                 <e-grid-column headerText="Type" template="#typeColumnTemplate" width="150px"></e-grid-column>
@@ -37,5 +39,12 @@
         <a class="btn btn-sm no-a-decoration" href="/Category/AddOrEdit/${CategoryId}">
             <i class="fa-solid fa-pen fa-lg" ></i>
         </a>
+        <form action = "/Category/Delete/${CategoryId}" method = "post">
+        @Html.AntiForgeryToken()
+        <button class="btn btn-sm btn-link no-a-decoration" type="submit"
+         onclick="return confirm(&quot;Are You Sure To Delete This Category?&quot)">
+            <i class="fa-solid fa-trash-can fa-lg text-danger"></i>
+        </button>
+        </form>
     </div>
 </script>
