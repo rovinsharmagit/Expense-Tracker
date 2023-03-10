@@ -29,8 +29,8 @@ namespace my_expenses.Controllers
         // GET: Transaction/AddOrEdit
         public IActionResult AddOrEdit()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId");
-            return View();
+            PopulateCategories();
+            return View( new Transaction());
         }
 
         // POST: Transaction/AddOrEdit
@@ -46,7 +46,7 @@ namespace my_expenses.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId", transaction.CategoryId);
+            PopulateCategories();
             return View(transaction);
         }
 
@@ -70,6 +70,13 @@ namespace my_expenses.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-       
+        [NonAction]
+        public void PopulateCategories()
+        {
+            var CategoriesCollection = _context.Categories.ToList();
+            Category DefaultCategory = new Category() {CategoryId = 0, Title = "Choose A Category"};
+            CategoriesCollection.Insert(0, DefaultCategory);
+            ViewBag.Categories = CategoriesCollection;
+        }
     }
 }
