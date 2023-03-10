@@ -1,46 +1,62 @@
 ﻿@model my_expenses.Models.Transaction
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["PageTitle"] = Model.TransactionId == 0? "Create a new transaction": "Edit a transaction";
 }
 
-<h1>Create</h1>
 
-<h4>Transaction</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+    <div class="col-md-7">
+        <div class="widget p-5" style="background-color:#212b36">
+        <form asp-action="AddOrEdit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CategoryId" class="control-label"></label>
-                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="Amount" class="control-label"></label>
-                <input asp-for="Amount" class="form-control" />
-                <span asp-validation-for="Amount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Note" class="control-label"></label>
-                <input asp-for="Note" class="form-control" />
-                <span asp-validation-for="Note" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
+            <div class="mb-3">
+                <ejs-datepicker id="date" ejs-for="Date"
+                placeholder="Date" floatLabelType="Always"
+                format="MMM-dd-yy"></ejs-datepicker>
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="mb-3">
+                <ejs-dropdownlist id="ddlCategory" dataSource="@ViewBag.Categories"
+                ejs-for="CategoryId" placeholder="Category"
+                floatLabelType="Always"
+                allowFiltering="true"
+                ignoreAccent="true"
+                filterType="Contains">
+                <e-dropdownlist-fields
+                value="CategoryId" text="TitleWithIcon">                    
+                </e-dropdownlist-fields>
+                </ejs-dropdownlist>
+            </div>
+            <div class="mb-3">
+                <ejs-numerictextbox id="amount"
+                ejs-for="Amount" 
+                placeholder="Amount" floatLabelType="Always"
+                min="0" format="0"
+                >
+                </ejs-numerictextbox>
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <ejs-textbox id="note" placeholder="Note"
+                ejs-for="Note" floatLabelType="Always"
+                multiline="true" >
+                </ejs-textbox>
+                <span asp-validation-for="Note" class="text-danger"></span>
+            </div>
+            
+            <div class="mb-3">
+                <ejs-button id="submit" typeof="submit" content="Submit" cssClass="e-success"></ejs-button>
             </div>
         </form>
+        </div>
     </div>
+    <div class="col-md-5">
+        <div class="widget h-100 d-flex justify-content-center align-items-center" style="background-color:#212b36">
+            <i class="fa-solid fa-money-bill-transfer fa-2xl"></i>
+        </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
