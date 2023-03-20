@@ -14,31 +14,14 @@
     <script src="https://cdn.syncfusion.com/ej2/20.4.48/dist/ej2.min.js"></script>
 </head>
 <body class="e-bigger" >
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">my_expenses</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <partial name ="_SideBar" />
+    <div class="main-content">
     <div class="container mt-5">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="@(ViewData["isDashboard"] == null?"col-md-10" : "col-md-12")>
                 <main role="main" class="pb-3">
+                    @if(ViewData["isDashboard"] == null)
+                    {
                     <div class="row">
                         <div class="col-md-7">
                             <div class="d-flex flex-column mb-5">
@@ -60,10 +43,12 @@
                             </div>
                         </div>
                     </div>
+                    }
                     @RenderBody()
                 </main>
             </div>
         </div>
+       </div>
        </div>
 
    
