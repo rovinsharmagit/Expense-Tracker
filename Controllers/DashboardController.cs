@@ -15,7 +15,7 @@ namespace my_expenses.Controllers
         public async Task<ActionResult> Index()
         {
             
-            DateTime StartDate = DateTime.Today.AddDays(-6);
+            DateTime StartDate = DateTime.Today.AddDays(-45);
             DateTime EndDate = DateTime.Today;
 
             List<Transaction> SelectedTransactions = await _context.Transactions
@@ -68,7 +68,7 @@ namespace my_expenses.Controllers
                     expense = k.Sum(l => l.Amount)
                 })
                 .ToList();
-            string[] Last7Days = Enumerable.Range(0, 7)
+            string[] Last7Days = Enumerable.Range(0, 45)
                 .Select(i => StartDate.AddDays(i).ToString("dd-MMM"))
                 .ToArray();
 
