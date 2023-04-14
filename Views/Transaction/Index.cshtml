@@ -1,18 +1,18 @@
 ﻿@model IEnumerable<my_expenses.Models.Transaction>
 
 @{
-    ViewData["PageTitle"] = "Transactions";
-   ViewData["PageActionext"] = "+ New Transaction";
+   ViewData["PageTitle"] = "Transactions";
+   ViewData["PageActionText"] = "+ New Transaction";
    ViewData["PageActionUrl"] = "/Transaction/AddOrEdit";
 }
 
 
 
 <div class="row" >
-    <div class="col-md-7">
+    <div class="col-md-11">
         <ejs-grid id="transactions" dataSource="@Model" gridLines="None"
          allowSorting="true" allowPaging="true" >
-          <e-grid-pagesettings pageSize="10"></e-grid-pagesettings>
+          <e-grid-pagesettings pageSize="8"></e-grid-pagesettings>
             <e-grid-columns>
                 <e-grid-column headerText="Category" field="CategoryTitleWithIcon"></e-grid-column>
                 <e-grid-column headerText="Date" field="Date" width="150px"
@@ -22,7 +22,7 @@
             </e-grid-columns>
         </ejs-grid>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-1">
         <div class="widget h-100 d-flex justify-content-center align-items-center">
             <i class="fa-solid fa-money-bill-transfer fa-2xl"></i>
         </div>
