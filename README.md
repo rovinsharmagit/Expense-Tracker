@@ -13,8 +13,5 @@ Etc.
 
 
  ## How it works ?
- 
-<img src="http://img.youtube.com/vi/zQ5eijfpuu8/0.jpg" 
-alt="creation of an expense tracker application" width="500" height="400" border="10" /></a>
 
-
+<a href='https://www.linkpicture.com/view.php?img=LPic643aa3baa4bb01398562036'><img src='https://www.linkpicture.com/q/Untitled_235.jpg' type='image'></a>
