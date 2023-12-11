@@ -75,11 +75,27 @@
 </ejs-sidebar>
 
 <script>
-    document.addEventListener('DOMContentLoaded',function (){
-        dockBar = document.getElementById('sidebar').ej2_instances[0];
-        document.getElementById('sidebar-toggler').onclick = function () {
-            dockBar.toggle();
-        };
-    });
+   document.addEventListener('DOMContentLoaded', function() {
+    const dockBar = document.getElementById('sidebar').ej2_instances[0];
+    const mainContent = document.querySelector('.main-content');
 
+    document.getElementById('sidebar-toggler').onclick = function() {
+        dockBar.toggle();
+        adjustLayout();
+    };
+
+    function adjustLayout() {
+        if (dockBar.element.classList.contains('e-close')) {
+            // When the sidebar is closed, adjust the width and margins of the main content
+            mainContent.style.marginLeft = '0';
+            mainContent.style.marginRight = '0';
+            mainContent.style.width = '100%';
+        } else {
+            // When the sidebar is open, reset the width and margins of the main content
+            mainContent.style.marginLeft = '290px'; // Adjust this width accordingly
+            mainContent.style.marginRight = '0px'; // Adjust this value according to your needs
+            mainContent.style.width = `calc(100% - ${parseInt(mainContent.style.marginLeft) + parseInt(mainContent.style.marginRight)}px)`;
+        }
+    }
+});
 </script>
